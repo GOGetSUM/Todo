@@ -1,0 +1,32 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends 'bootstrap/base.html' %}
+
+{% block styles %}
+  {{ super() }}
+{% endblock %}
+{% block title %}Task Info.{% endblock %}
+
+{% block content %}
+    <body>
+        <section class="search">
+            <div class="container card">
+                <div class="search">
+                    <h1>{{ task.title }}</h1>
+                    <div class="row">
+                    </div>
+                    <div class="info has-block ">
+                            <ul>Status: {{task.completion}} %</ul>
+                            <ul>Date Entered: {{task.date}}</ul>
+                            <ul>Comments: {{task.body}} </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <a class="btn btn-primary" href="{{url_for('home')}}">Go Back</a>
+            </div>
+        </section>
+
+
+    </body>
+{% endblock %}
+</html>

@@ -1,0 +1,54 @@
+Todo list app
+
+Create an application can can hold your to do list and show progress.
+
+    Requirements:
+        1) Show list of current to do list
+               Add new task
+               Task are sorted by weighted value
+                    80/20 top task are most productive.
+        2) Show tracker of current started task
+            green bar - task 0-100%
+            edit input for completion.
+                and comments.
+
+        3) Show completed tasked.
+            has option to pull info and see entries.
+            filter through updates and comments.
+
+
+
+    Build Plan:
+        1) Website Structure.
+            Just build the framework-DONE
+            place holders for section on page. - DONE
+
+        2) Build back end/ ensure code runs - DONE
+            Tackle the list by requirements on top. 1by1
+
+        3) Add style make it user friendly simple. -
+
+
+      Build:
+        1) Listing , Filter, Add new.
+            functions needed -
+                - Get database information - DONE
+                - Filter database information - DONE
+                - Post task - DONE
+                - Add new post - DONE
+
+        2) On-going: List, Edit status, Add comment.
+            functions needed -
+                - Show listings - DONE
+                - Edit current status - DONE
+                    databas entries for current status update...each task needs a new own table to save entries
+        3) Completes: - DONE
+            function - DONE
+                -Show listings -DONE
+
+        4) Search:
+            Functions required-
+                - Pull Database per task - Done
+
+
+

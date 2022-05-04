@@ -1,0 +1,75 @@
+
+
+<!DOCTYPE html>
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+
+<!-- Bootstrap core CSS -->
+<link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="{{ url_for('static', filename='style.css')}}" rel="stylesheet">
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To do List</title>
+</head>
+<body>
+
+    <section class="listings">
+        <div class="container">
+            <div class="row">
+                <div class="to-do has-block card has-padding" >
+                    <h1 class="has-margin-bottom"> To Do</h1>
+                    {% for task in all_task %}
+                        {% if not task.completion %}
+                            <div class="listings">
+                                <ul>Task [id: {{task.id}}]: {{task.title}}.
+                                    <a href="{{url_for('update', task_id= task.id)}}">Update </a>
+                                </ul>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    <a class="btn btn-primary" href="{{url_for('add')}}">Add New Task</a>
+                </div>
+                <div class="current has-block card has-padding" >
+                    <h1 class="has-margin-bottom"> On-going</h1>
+                    {% for task in all_task %}
+                        {% if task.completion and task.completion != 100 %}
+                            <div class="listings">
+                                <ul>Task [id: {{task.id}}]: {{task.title}}</ul>
+                                <ul class="has-indent">Completion: {{task.completion}}%
+                                    <a href="{{url_for('update', task_id= task.id)}}">Update </a>
+                                </ul>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="completed has-block card has-padding" >
+                    <h1 class="has-margin-bottom"> Completed List</h1>
+                    {% for task in all_task %}
+                        {% if task.completion and task.completion == 100 %}
+                        <ul>Task [id: {{task.id}}]: {{task.title}}</ul>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="search">
+        <div class="container card">
+            <div class="search">
+                <h1>Search a Task</h1>
+                {{wtf.quick_form(form,novalidate=True,button_map={'submit':"primary"})}}
+            </div>
+        </div>
+    </section>
+
+
+</body>
+</html>
+{% endblock %}
